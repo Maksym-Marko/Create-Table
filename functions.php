@@ -27,3 +27,6 @@ $product_table->create_columns( 'product_id' );
 
 // create table
 $product_table->create_table();
+
+// product_id
+$product_table->int( 'product_id' );

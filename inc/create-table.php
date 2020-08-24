@@ -60,6 +60,16 @@ class MxCreateTable
 
 	}
 
+	// add int
+	public function int( $column_name = 'integer' )
+	{
+
+		$sql = "$column_name int(11) NOT NULL";
+
+		array_push( $this->columns, $sql );
+
+	}
+
 	// add datetime
 	public function datetime( $column_name = 'created', $default = NULL )
 	{
@@ -131,8 +141,6 @@ class MxCreateTable
 			return 0;
 
 		}
-
-		// update_option( 'mx_some_2', 2 );
 
 	}
 }

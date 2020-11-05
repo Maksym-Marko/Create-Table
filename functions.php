@@ -30,3 +30,10 @@ $product_table->create_table();
 
 // product_id
 $product_table->int( 'product_id' );
+
+// add HASH column
+$product_table = new MxCreateTable( $bestandlive_calc );
+
+$product_table->varchar( 'product_hash', 10, true );
+
+$product_table->add_columns();

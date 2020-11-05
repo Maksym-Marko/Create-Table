@@ -143,4 +143,41 @@ class MxCreateTable
 		}
 
 	}
+
+	/*
+	* add column if not exists
+	*/ 
+	public function add_columns()
+	{
+
+		// 
+		if( count( $this->columns ) >= 1 ) {
+
+			foreach ( $this->columns as $key => $value ) {
+
+				$array_words = explode( ' ', $value );
+
+				$column_name = $array_words[0];
+
+				$add_column = $this->wpdb->get_results(
+					"SELECT COLUMN_NAME 
+					FROM INFORMATION_SCHEMA.COLUMNS
+					WHERE table_name = '$this->table'
+						AND column_name = '$column_name'" 
+				);
+
+				if( empty( $add_column ) ){
+
+				   $this->wpdb->query(
+				   		"ALTER TABLE $this->table ADD $value"
+				   	);
+
+				}
+
+			}
+			
+
+		}		
+
+	}
 }
